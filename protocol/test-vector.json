@@ -1,0 +1,8 @@
+{
+  "sessionId": "0123456789abcdef",
+  "fileName": "fixture.txt",
+  "sourceUtf8": "hello QRBeam\n",
+  "sha256": "764a2dca7d4481299879e4059ad2bd73cf5fa762571ac4a3174372a0ffb83aec",
+  "manifestFrame": "QRB1|M|0123456789abcdef|eyJjaHVua1NpemUiOjQ4MCwiZmlsZU5hbWUiOiJmaXh0dXJlLnR4dCIsImZpbGVTaXplIjoxMywibWltZSI6InRleHQvcGxhaW4iLCJwcm90b2NvbCI6IlFSQjEiLCJzaGEyNTYiOiI3NjRhMmRjYTdkNDQ4MTI5OTg3OWU0MDU5YWQyYmQ3M2NmNWZhNzYyNTcxYWM0YTMxNzQzNzJhMGZmYjgzYWVjIiwidG90YWxDaHVua3MiOjF9|2cfbaadd",
+  "dataFrame": "QRB1|D|0123456789abcdef|0|1|aGVsbG8gUVJCZWFtCg|9370828f"
+}

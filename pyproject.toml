@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qrbeam"
+version = "0.1.0"
+description = "Local screen-to-camera file transfer using animated QR codes"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "leoliu", email = "lsl8315@163.com" },
+]
+keywords = ["qrcode", "file-transfer", "offline", "cli"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Communications :: File Sharing",
+]
+dependencies = [
+  "qrcode[pil]==8.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/Heipiao/qrbeam"
+Repository = "https://github.com/Heipiao/qrbeam.git"
+Issues = "https://github.com/Heipiao/qrbeam/issues"
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.4.2",
+]
+
+[project.scripts]
+qrbeam = "qrbeam.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
