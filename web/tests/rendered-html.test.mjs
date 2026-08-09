@@ -49,3 +49,17 @@ test("includes the requested standalone pages and social card", async () => {
   await access(new URL("public/og.png", root));
   await assert.rejects(access(new URL("app\/_sites-preview", root)));
 });
+
+test("privacy language switch uses native navigation", async () => {
+  const [response, components] = await Promise.all([
+    render("/privacy"),
+    readFile(new URL("app/site-components.tsx", root), "utf8"),
+  ]);
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const href of ["/privacy", "/en/privacy", "/ja/privacy", "/ko/privacy", "/fr/privacy", "/de/privacy"]) {
+    assert.match(html, new RegExp(`href="${href}"`));
+  }
+  assert.match(components, /locales\.map\(item => <a\b/);
+});

@@ -18,7 +18,7 @@ export function Header({ locale = "zh", page = "" }: { locale?: Locale; page?: s
       <div className="header-actions">
         <details className="language-menu">
           <summary aria-label={t.language}>文 <span>⌄</span></summary>
-          <div>{locales.map(item => <Link className={item === locale ? "active" : ""} href={localeHref(item, page)} hrefLang={languageInfo[item].htmlLang} key={item}>{languageInfo[item].label}</Link>)}</div>
+          <div>{locales.map(item => <a className={item === locale ? "active" : ""} href={localeHref(item, page)} hrefLang={languageInfo[item].htmlLang} aria-current={item === locale ? "page" : undefined} key={item}>{languageInfo[item].label}</a>)}</div>
         </details>
         <Link className="header-cta" href={localeHref(locale, "install")}>{t.start}</Link>
       </div>
