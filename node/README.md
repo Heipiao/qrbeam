@@ -21,3 +21,5 @@ qrbeam send FILE [--profile safe|fast] [--port 8765] [--no-open]
 The Node and Python CLIs emit the same QRB1 wire format. Transfer remains offline, but QRBeam should only be used for files you are authorized to move; it is not designed to bypass security or DLP controls.
 
 Source and protocol documentation: https://github.com/Heipiao/qrbeam
+
+Releases use npm Trusted Publishing from `.github/workflows/npm-publish.yml`. A GitHub Release tagged `npm-vX.Y.Z` must exactly match the version in this package. The workflow uses OIDC and does not require an `NPM_TOKEN` secret.
