@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { copy, languageInfo, localeHref, locales, type Locale } from "./i18n";
+import { copy, localeHref, type Locale } from "./i18n";
+import { LanguageMenu, LanguageRedirect } from "./language-menu";
 
 export function QrMark() {
   return <span className="brand-mark" aria-hidden="true"><i /><i /><i /><b /></span>;
@@ -9,6 +10,7 @@ export function Header({ locale = "zh", page = "" }: { locale?: Locale; page?: s
   const t = copy[locale].common;
   return (
     <header className="site-header shell">
+      <LanguageRedirect />
       <Link className="brand" href={localeHref(locale)} aria-label="QRBeam"><QrMark /><strong>QRBeam</strong></Link>
       <nav aria-label="Main navigation">
         <Link href={localeHref(locale, "install")}>{t.install}</Link>
@@ -16,10 +18,7 @@ export function Header({ locale = "zh", page = "" }: { locale?: Locale; page?: s
         <Link href={localeHref(locale, "support")}>{t.support}</Link>
       </nav>
       <div className="header-actions">
-        <details className="language-menu">
-          <summary aria-label={t.language}>文 <span>⌄</span></summary>
-          <div>{locales.map(item => <a className={item === locale ? "active" : ""} href={localeHref(item, page)} hrefLang={languageInfo[item].htmlLang} aria-current={item === locale ? "page" : undefined} key={item}>{languageInfo[item].label}</a>)}</div>
-        </details>
+        <LanguageMenu locale={locale} page={page} />
         <Link className="header-cta" href={localeHref(locale, "install")}>{t.start}</Link>
       </div>
     </header>
