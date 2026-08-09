@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { copy, localeHref, type Locale } from "./i18n";
 import { Footer, Header, QrMark } from "./site-components";
 
 const qrPattern = [
@@ -33,7 +34,7 @@ function QrVisual() {
       </div>
       <div className="transfer-pill">
         <span className="pulse-dot" />
-        本地传输中
+        LOCAL
         <span className="mono">68%</span>
       </div>
       <div className="file-chip file-chip-one">
@@ -48,85 +49,85 @@ function QrVisual() {
   );
 }
 
-export default function Home() {
+export function LocalizedHome({ locale }: { locale: Locale }) {
+  const t = copy[locale].home;
+  const common = copy[locale].common;
   return (
-    <main>
-      <Header />
+    <main lang={locale}>
+      <Header locale={locale} page="" />
 
       <section className="hero shell">
         <div className="hero-copy">
-          <div className="eyebrow"><span />屏幕到相机 · 无需云端</div>
-          <h1>让文件，<br /><em>从屏幕跃入手机。</em></h1>
-          <p className="hero-lede">
-            QRBeam 把小文件编码成动态二维码。电脑负责播放，iPhone 负责扫描——不需要登录、数据线或云盘。
-          </p>
+          <div className="eyebrow"><span />{t.eyebrow}</div>
+          <h1>{t.h1}<br /><em>{t.h2}</em></h1>
+          <p className="hero-lede">{t.lede}</p>
           <div className="hero-actions">
-            <Link className="button button-primary" href="/install">开始安装 <span>↗</span></Link>
-            <a className="button button-ghost" href="#how-it-works">了解工作方式</a>
+            <Link className="button button-primary" href={localeHref(locale, "install")}>{common.start} <span>↗</span></Link>
+            <a className="button button-ghost" href="#how-it-works">{t.learn}</a>
           </div>
           <div className="hero-facts">
-            <span>不上传文件</span><span>CRC32 + SHA-256 校验</span><span>最大 5 MiB</span>
+            {t.facts.map(item => <span key={item}>{item}</span>)}
           </div>
         </div>
         <QrVisual />
       </section>
 
-      <section className="ticker" aria-label="产品特点">
-        <div>OFFLINE FIRST <i /> LOCAL ONLY <i /> VERIFIED TRANSFER <i /> SCREEN TO CAMERA <i /> NO ACCOUNT</div>
+      <section className="ticker" aria-label="QRBeam">
+        <div>{t.ticker.map((item, index) => <span key={item}>{item}{index < t.ticker.length - 1 && <i />}</span>)}</div>
       </section>
 
       <section className="section shell" id="how-it-works">
         <div className="section-heading split-heading">
           <div>
-            <span className="kicker">HOW IT WORKS</span>
-            <h2>三步，隔空传过去</h2>
+            <span className="kicker">{t.howKicker}</span>
+            <h2>{t.howTitle}</h2>
           </div>
-          <p>QRBeam 在电脑本地启动播放器。每一帧都带有校验信息，手机收齐后再恢复原文件。</p>
+          <p>{t.howBody}</p>
         </div>
         <div className="steps-grid">
           <article className="step-card">
             <span className="step-number">01</span>
             <div className="step-symbol terminal-symbol"><b>›_</b></div>
-            <h3>安装命令行工具</h3>
-            <p>任选 Python 或 Node.js，一条命令完成安装。</p>
+            <h3>{t.steps[0][0]}</h3>
+            <p>{t.steps[0][1]}</p>
           </article>
           <article className="step-card featured-step">
             <span className="step-number">02</span>
             <div className="step-symbol play-symbol"><b>▶</b></div>
-            <h3>播放你的文件</h3>
-            <p>运行 <code>qrbeam send FILE</code>，浏览器自动打开动态二维码。</p>
+            <h3>{t.steps[1][0]}</h3>
+            <p>{t.steps[1][1]}</p>
           </article>
           <article className="step-card">
             <span className="step-number">03</span>
             <div className="step-symbol phone-symbol"><b /></div>
-            <h3>用 iPhone 扫描</h3>
-            <p>QRBeam 收齐、校验并保存文件，然后可直接分享。</p>
+            <h3>{t.steps[2][0]}</h3>
+            <p>{t.steps[2][1]}</p>
           </article>
         </div>
       </section>
 
       <section className="section shell install-preview" id="install">
         <div className="install-copy">
-          <span className="kicker">INSTALL IN SECONDS</span>
-          <h2>选你熟悉的方式</h2>
-          <p>Python 与 Node.js 发送端使用同一种 QRB1 协议，接收体验完全一致。</p>
-          <Link className="text-link" href="/install">查看完整安装指南 <span>→</span></Link>
+          <span className="kicker">{t.installKicker}</span>
+          <h2>{t.installTitle}</h2>
+          <p>{t.installBody}</p>
+          <Link className="text-link" href={localeHref(locale, "install")}>{t.installLink} <span>→</span></Link>
         </div>
         <div className="code-window">
           <div className="window-bar"><span /><span /><span /><b>Terminal</b></div>
           <div className="code-tabs"><span className="active">Python</span><span>Node.js</span></div>
-          <pre><span className="comment"># 需要 Python 3.10+</span>{"\n"}<span className="prompt">$</span> python3 -m pip install --upgrade qrbeam{"\n\n"}<span className="comment"># 发送一个文件</span>{"\n"}<span className="prompt">$</span> qrbeam send ./example.zip</pre>
-          <div className="code-status"><span>●</span> 播放器将在 127.0.0.1 自动打开</div>
+          <pre><span className="comment">{t.comment1}</span>{"\n"}<span className="prompt">$</span> python3 -m pip install --upgrade qrbeam{"\n\n"}<span className="comment">{t.comment2}</span>{"\n"}<span className="prompt">$</span> qrbeam send ./example.zip</pre>
+          <div className="code-status"><span>●</span> {t.status}</div>
         </div>
       </section>
 
       <section className="section shell trust-section">
         <div className="trust-panel">
           <div className="trust-copy">
-            <span className="kicker">PRIVATE BY DESIGN</span>
-            <h2>你的文件，没有绕路。</h2>
-            <p>文件内容和二维码帧都留在你的设备上。QRBeam 不创建账户，不上传所选文件，也不使用广告追踪。</p>
-            <Link className="text-link light-link" href="/privacy">阅读隐私政策 <span>→</span></Link>
+            <span className="kicker">{t.trustKicker}</span>
+            <h2>{t.trustTitle}</h2>
+            <p>{t.trustBody}</p>
+            <Link className="text-link light-link" href={localeHref(locale, "privacy")}>{t.trustLink} <span>→</span></Link>
           </div>
           <div className="privacy-orbit" aria-hidden="true">
             <div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" />
@@ -139,13 +140,17 @@ export default function Home() {
 
       <section className="section shell support-callout">
         <div>
-          <span className="kicker">NEED A HAND?</span>
-          <h2>卡住了，我们一起解决。</h2>
+          <span className="kicker">{t.supportKicker}</span>
+          <h2>{t.supportTitle}</h2>
         </div>
-        <Link className="button button-dark" href="/support">前往技术支持 <span>→</span></Link>
+        <Link className="button button-dark" href={localeHref(locale, "support")}>{t.supportButton} <span>→</span></Link>
       </section>
 
-      <Footer />
+      <Footer locale={locale} />
     </main>
   );
+}
+
+export default function Home() {
+  return <LocalizedHome locale="zh" />;
 }

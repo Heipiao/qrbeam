@@ -31,18 +31,21 @@ test("server-renders the QRBeam landing page", async () => {
 });
 
 test("includes the requested standalone pages and social card", async () => {
-  const [install, privacy, support] = await Promise.all([
+  const [install, privacy, support, i18n, localeHome] = await Promise.all([
     readFile(new URL("app/install/page.tsx", root), "utf8"),
     readFile(new URL("app/privacy/page.tsx", root), "utf8"),
     readFile(new URL("app/support/page.tsx", root), "utf8"),
+    readFile(new URL("app/i18n.ts", root), "utf8"),
+    readFile(new URL("app/[locale]/page.tsx", root), "utf8"),
   ]);
 
   assert.match(install, /pip install --upgrade qrbeam/);
   assert.match(install, /npm install --global qrbeam/);
-  assert.match(privacy, /不上传所选文件/);
-  assert.match(privacy, /Apple StoreKit/);
-  assert.match(support, /邮件联系我们/);
+  assert.match(privacy, /LocalizedPrivacy/);
+  assert.match(support, /mailto:lsl8315@163.com/);
   assert.doesNotMatch(support, /GitHub/);
+  for (const locale of ["zh", "en", "ja", "ko", "fr", "de"]) assert.match(i18n, new RegExp(`\\b${locale}:`));
+  assert.match(localeHome, /generateStaticParams/);
   await access(new URL("public/og.png", root));
   await assert.rejects(access(new URL("app\/_sites-preview", root)));
 });
