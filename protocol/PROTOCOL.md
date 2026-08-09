@@ -1,6 +1,6 @@
 # QRB1 protocol
 
-QRB1 is the MVP wire format used by QRBeam. Every QR code contains one UTF-8 ASCII frame.
+QRB1 is the MVP wire format shared by the Python CLI, Node CLI, and iOS app. Every QR code contains one UTF-8 ASCII frame.
 
 ```text
 QRB1|M|<16-hex-session-id>|<base64url-manifest-json>|<crc32>

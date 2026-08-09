@@ -1,0 +1,51 @@
+{
+  "name": "qrbeam",
+  "version": "0.1.0",
+  "description": "Send files offline as animated QR codes",
+  "type": "module",
+  "bin": {
+    "qrbeam": "bin/qrbeam.js"
+  },
+  "exports": {
+    ".": "./src/protocol.js",
+    "./protocol": "./src/protocol.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test --test-reporter=spec",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heipiao/qrbeam.git",
+    "directory": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/Heipiao/qrbeam/issues"
+  },
+  "homepage": "https://github.com/Heipiao/qrbeam#readme",
+  "keywords": [
+    "qrcode",
+    "file-transfer",
+    "offline",
+    "cli"
+  ],
+  "author": "leoliu <lsl8315@163.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "mime-types": "3.0.2",
+    "open": "11.0.0",
+    "qrcode": "1.5.4"
+  }
+}

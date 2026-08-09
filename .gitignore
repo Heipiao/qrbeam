@@ -13,3 +13,7 @@ mobile/ios/build/
 mobile/ios/DerivedData/
 mobile/.bundle/
 mobile/npm-debug.log*
+
+node/node_modules/
+node/*.tgz
+node/npm-debug.log*
