@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { copy, localeHref, type Locale } from "./i18n";
 import { Footer, Header, QrMark } from "./site-components";
 
@@ -62,7 +61,7 @@ export function LocalizedHome({ locale }: { locale: Locale }) {
           <h1>{t.h1}<br /><em>{t.h2}</em></h1>
           <p className="hero-lede">{t.lede}</p>
           <div className="hero-actions">
-            <Link className="button button-primary" href={localeHref(locale, "install")}>{common.start} <span>↗</span></Link>
+            <a className="button button-primary" href={localeHref(locale, "install")}>{common.start} <span>↗</span></a>
             <a className="button button-ghost" href="#how-it-works">{t.learn}</a>
           </div>
           <div className="hero-facts">
@@ -111,7 +110,7 @@ export function LocalizedHome({ locale }: { locale: Locale }) {
           <span className="kicker">{t.installKicker}</span>
           <h2>{t.installTitle}</h2>
           <p>{t.installBody}</p>
-          <Link className="text-link" href={localeHref(locale, "install")}>{t.installLink} <span>→</span></Link>
+          <a className="text-link" href={localeHref(locale, "install")}>{t.installLink} <span>→</span></a>
         </div>
         <div className="code-window">
           <div className="window-bar"><span /><span /><span /><b>Terminal</b></div>
@@ -127,7 +126,7 @@ export function LocalizedHome({ locale }: { locale: Locale }) {
             <span className="kicker">{t.trustKicker}</span>
             <h2>{t.trustTitle}</h2>
             <p>{t.trustBody}</p>
-            <Link className="text-link light-link" href={localeHref(locale, "privacy")}>{t.trustLink} <span>→</span></Link>
+            <a className="text-link light-link" href={localeHref(locale, "privacy")}>{t.trustLink} <span>→</span></a>
           </div>
           <div className="privacy-orbit" aria-hidden="true">
             <div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" />
@@ -143,7 +142,7 @@ export function LocalizedHome({ locale }: { locale: Locale }) {
           <span className="kicker">{t.supportKicker}</span>
           <h2>{t.supportTitle}</h2>
         </div>
-        <Link className="button button-dark" href={localeHref(locale, "support")}>{t.supportButton} <span>→</span></Link>
+        <a className="button button-dark" href={localeHref(locale, "support")}>{t.supportButton} <span>→</span></a>
       </section>
 
       <Footer locale={locale} />

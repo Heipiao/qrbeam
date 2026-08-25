@@ -52,9 +52,12 @@ test("includes the requested standalone pages and social card", async () => {
 });
 
 test("privacy language switch uses native navigation", async () => {
-  const [response, languageMenu] = await Promise.all([
+  const [response, languageMenu, home, siteComponents, reviewDemo] = await Promise.all([
     render("/privacy"),
     readFile(new URL("app/language-menu.tsx", root), "utf8"),
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/site-components.tsx", root), "utf8"),
+    readFile(new URL("app/review-demo/review-demo.tsx", root), "utf8"),
   ]);
 
   assert.equal(response.status, 200);
@@ -66,6 +69,9 @@ test("privacy language switch uses native navigation", async () => {
   assert.match(languageMenu, /window\.localStorage\.setItem/);
   assert.match(languageMenu, /navigator\.languages/);
   assert.match(languageMenu, /window\.location\.replace/);
+  for (const source of [languageMenu, home, siteComponents, reviewDemo]) {
+    assert.doesNotMatch(source, /next\/link|<Link\b/);
+  }
 });
 
 test("serves the unlinked App Review demo and exact public fixture", async () => {

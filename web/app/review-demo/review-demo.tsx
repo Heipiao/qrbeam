@@ -1,7 +1,6 @@
 "use client";
 
 import QRCode from "qrcode/lib/browser";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { languageInfo, locales, type Locale } from "../i18n";
 
@@ -148,7 +147,7 @@ export default function ReviewDemo() {
   return (
     <main className="review-demo-page">
       <header className="review-demo-header">
-        <Link href="/" className="review-demo-brand" aria-label="QRBeam home"><span>Q</span> QRBeam</Link>
+        <a href="/" className="review-demo-brand" aria-label="QRBeam home"><span>Q</span> QRBeam</a>
         <div className="review-demo-header-actions">
           <div className="review-demo-title"><strong>{t.pageTitle}</strong><small>{t.protocol}</small></div>
           <label className="review-language"><span>{t.language}</span><select value={locale} onChange={event => changeLocale(event.target.value as Locale)}>{locales.map(item => <option value={item} key={item}>{languageInfo[item].label}</option>)}</select></label>
