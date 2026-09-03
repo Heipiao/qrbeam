@@ -1,0 +1,8 @@
+"share.preparing" = "Datei wird vorbereitet…";
+"share.done" = "Fertig";
+"share.singleFile" = "Wähle eine Datei. Stapelversand wird noch nicht unterstützt.";
+"share.ready" = "Datei zu QRBeam hinzugefügt.\nÖffne QRBeam und starte unter „Handy zu Handy“ den Versand.";
+"share.missingFile" = "Die geteilte Datei konnte nicht gelesen werden.";
+"share.directory" = "QRBeam unterstützt noch keine Ordner.";
+"share.tooLarge" = "Dateien dürfen höchstens 5 MiB groß sein.";
+"share.storageUnavailable" = "Der gemeinsame QRBeam-Speicher ist nicht verfügbar.";

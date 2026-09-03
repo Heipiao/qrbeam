@@ -17,3 +17,25 @@ mobile/npm-debug.log*
 node/node_modules/
 node/*.tgz
 node/npm-debug.log*
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+!.env.sample
+*.p8
+*.p12
+*.pfx
+*.pem
+*.key
+*.mobileprovision
+*.provisionprofile
+.netrc
+.npmrc
+
+# Exported apps, signing reports, and local build logs
+*.ipa
+*.xcarchive/
+*.dSYM/
+*.dSYM.zip
+/store-assets/review-build/

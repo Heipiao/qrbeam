@@ -1,40 +1,68 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
+import { colors, radii } from '../ui/theme';
 
 export function AppButton({
   label,
   onPress,
   secondary = false,
   disabled = false,
+  loading = false,
 }: {
   label: string;
   onPress: () => void;
   secondary?: boolean;
   disabled?: boolean;
+  loading?: boolean;
 }): React.JSX.Element {
   return (
-    <TouchableOpacity
+    <Pressable
       accessibilityLabel={label}
       accessibilityRole="button"
-      disabled={disabled}
+      accessibilityState={{ disabled: disabled || loading, busy: loading }}
+      disabled={disabled || loading}
       onPress={onPress}
-      style={[styles.button, secondary && styles.secondary, disabled && styles.disabled]}>
-      <Text style={[styles.text, secondary && styles.secondaryText]}>{label}</Text>
-    </TouchableOpacity>
+      style={({ pressed }) => [
+        styles.button,
+        secondary && styles.secondary,
+        pressed && (secondary ? styles.secondaryPressed : styles.pressed),
+        (disabled || loading) && styles.disabled,
+      ]}
+    >
+      {loading ? (
+        <ActivityIndicator color={secondary ? colors.text : colors.ink} />
+      ) : (
+        <Text style={[styles.text, secondary && styles.secondaryText]}>
+          {label}
+        </Text>
+      )}
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#67E8A5',
-    borderRadius: 14,
-    minHeight: 48,
+    backgroundColor: colors.accent,
+    borderRadius: radii.medium,
+    minHeight: 50,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 22,
   },
-  secondary: {backgroundColor: '#242A33'},
-  disabled: {opacity: 0.45},
-  text: {color: '#07120C', fontSize: 16, fontWeight: '700'},
-  secondaryText: {color: 'white'},
+  secondary: {
+    backgroundColor: colors.surfaceRaised,
+    borderColor: colors.border,
+    borderWidth: 1,
+  },
+  pressed: {
+    backgroundColor: colors.accentPressed,
+    transform: [{ scale: 0.99 }],
+  },
+  secondaryPressed: {
+    backgroundColor: colors.border,
+    transform: [{ scale: 0.99 }],
+  },
+  disabled: { opacity: 0.45 },
+  text: { color: colors.ink, fontSize: 16, fontWeight: '700' },
+  secondaryText: { color: colors.text },
 });

@@ -1,0 +1,5 @@
+"store.unknownProduct" = "Unknown QRBeam subscription product.";
+"store.unavailable" = "This subscription is currently unavailable from the App Store.";
+"store.unverified" = "The App Store transaction couldn’t be verified.";
+"native.appGroupUnavailable" = "QRBeam shared storage is unavailable.";
+"native.pendingInvalid" = "The pending shared file is invalid.";

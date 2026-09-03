@@ -1,0 +1,5 @@
+"store.unknownProduct" = "Unbekanntes QRBeam-Abo.";
+"store.unavailable" = "Dieses Abo ist derzeit nicht im App Store verfügbar.";
+"store.unverified" = "Die App-Store-Transaktion konnte nicht verifiziert werden.";
+"native.appGroupUnavailable" = "Der gemeinsame QRBeam-Speicher ist nicht verfügbar.";
+"native.pendingInvalid" = "Die zum Senden vorgemerkte Datei ist ungültig.";

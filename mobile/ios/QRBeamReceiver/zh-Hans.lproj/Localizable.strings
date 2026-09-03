@@ -1,0 +1,5 @@
+"store.unknownProduct" = "无法识别此 QRBeam 订阅商品。";
+"store.unavailable" = "此订阅目前无法从 App Store 获取。";
+"store.unverified" = "无法验证 App Store 交易。";
+"native.appGroupUnavailable" = "QRBeam 共享存储不可用。";
+"native.pendingInvalid" = "待发送的共享文件无效。";

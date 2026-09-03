@@ -1,0 +1,8 @@
+"share.preparing" = "正在准备文件…";
+"share.done" = "完成";
+"share.singleFile" = "请选择一个文件，QRBeam 暂不支持批量发送。";
+"share.ready" = "文件已加入 QRBeam。\n请打开 QRBeam，在“手机传手机”中开始发送。";
+"share.missingFile" = "无法读取共享文件。";
+"share.directory" = "QRBeam 暂不支持发送目录。";
+"share.tooLarge" = "文件不能超过 5 MiB。";
+"share.storageUnavailable" = "QRBeam 共享存储不可用。";

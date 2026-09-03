@@ -1,0 +1,8 @@
+"share.preparing" = "ファイルを準備中…";
+"share.done" = "完了";
+"share.singleFile" = "ファイルを1つ選択してください。QRBeamは一括送信に未対応です。";
+"share.ready" = "QRBeamにファイルを追加しました。\nQRBeamを開き、「スマホ間転送」から送信してください。";
+"share.missingFile" = "共有ファイルを読み込めませんでした。";
+"share.directory" = "QRBeamはフォルダ送信に未対応です。";
+"share.tooLarge" = "ファイルは5 MiB以下にしてください。";
+"share.storageUnavailable" = "QRBeamの共有ストレージを利用できません。";

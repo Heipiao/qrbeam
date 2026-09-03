@@ -1,0 +1,5 @@
+"store.unknownProduct" = "QRBeamのサブスクリプション商品を確認できません。";
+"store.unavailable" = "このサブスクリプションは現在App Storeで利用できません。";
+"store.unverified" = "App Storeの取引を検証できませんでした。";
+"native.appGroupUnavailable" = "QRBeamの共有ストレージを利用できません。";
+"native.pendingInvalid" = "送信待ちの共有ファイルが無効です。";

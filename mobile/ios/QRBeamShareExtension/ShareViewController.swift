@@ -16,13 +16,13 @@ final class ShareViewController: UIViewController {
 
   private func configureUI() {
     view.backgroundColor = UIColor(red: 0.035, green: 0.043, blue: 0.063, alpha: 1)
-    statusLabel.text = "正在准备文件…"
+    statusLabel.text = NSLocalizedString("share.preparing", comment: "")
     statusLabel.textColor = .white
     statusLabel.font = .systemFont(ofSize: 18, weight: .semibold)
     statusLabel.numberOfLines = 0
     statusLabel.textAlignment = .center
 
-    doneButton.setTitle("完成", for: .normal)
+    doneButton.setTitle(NSLocalizedString("share.done", comment: ""), for: .normal)
     doneButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
     doneButton.tintColor = UIColor(red: 0.40, green: 0.91, blue: 0.65, alpha: 1)
     doneButton.isHidden = true
@@ -49,7 +49,7 @@ final class ShareViewController: UIViewController {
       .flatMap { $0.attachments ?? [] }
       .filter { $0.hasItemConformingToTypeIdentifier(UTType.data.identifier) }
     guard providers.count == 1, let provider = providers.first else {
-      showResult("请选择一个文件，QRBeam 暂不支持批量发送。", isError: true)
+      showResult(NSLocalizedString("share.singleFile", comment: ""), isError: true)
       return
     }
 
@@ -60,7 +60,7 @@ final class ShareViewController: UIViewController {
         guard let sourceURL else { throw ShareError.missingFile }
         try self.persist(sourceURL: sourceURL)
         DispatchQueue.main.async {
-          self.showResult("文件已加入 QRBeam。\n请打开 QRBeam，在“手机传手机”中开始发送。", isError: false)
+          self.showResult(NSLocalizedString("share.ready", comment: ""), isError: false)
         }
       } catch {
         DispatchQueue.main.async {
@@ -131,10 +131,10 @@ private enum ShareError: LocalizedError {
 
   var errorDescription: String? {
     switch self {
-    case .missingFile: return "无法读取共享文件。"
-    case .directory: return "QRBeam 暂不支持发送目录。"
-    case .tooLarge: return "文件不能超过 5 MiB。"
-    case .appGroup: return "QRBeam 共享存储不可用。"
+    case .missingFile: return NSLocalizedString("share.missingFile", comment: "")
+    case .directory: return NSLocalizedString("share.directory", comment: "")
+    case .tooLarge: return NSLocalizedString("share.tooLarge", comment: "")
+    case .appGroup: return NSLocalizedString("share.storageUnavailable", comment: "")
     }
   }
 }

@@ -1,0 +1,8 @@
+"share.preparing" = "Preparing file…";
+"share.done" = "Done";
+"share.singleFile" = "Choose one file. QRBeam doesn’t support batch sending yet.";
+"share.ready" = "File added to QRBeam.\nOpen QRBeam and start from Phone to phone.";
+"share.missingFile" = "Couldn’t read the shared file.";
+"share.directory" = "QRBeam doesn’t support folders yet.";
+"share.tooLarge" = "Files must be 5 MiB or smaller.";
+"share.storageUnavailable" = "QRBeam shared storage is unavailable.";
